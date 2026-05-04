@@ -48,6 +48,55 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "500 DA",
             description: "Brillance intense et fini cristallin.",
             image: "images/gloss_kiko.png"
+        },
+        {
+            id: 8,
+            name: "Huile de Figue de Barbarie",
+            price: "4500 DA",
+            description: "Élixir anti-âge 100% pur et précieux.",
+            image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=400"
+        },
+        {
+            id: 9,
+            name: "Ghassoul aux 7 Herbes",
+            price: "1200 DA",
+            description: "Masque traditionnel pour peau et cheveux.",
+            image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&q=80&w=400"
+        },
+        {
+            id: 10,
+            name: "Eau de Rose de Blida",
+            price: "950 DA",
+            description: "Tonique naturel rafraîchissant et apaisant.",
+            image: "https://images.unsplash.com/photo-1558191053-8edcb01e1da3?auto=format&fit=crop&q=80&w=400"
+        },
+        {
+            id: 11,
+            name: "Musc Tahara Pur",
+            price: "1500 DA",
+            description: "Parfum blanc crémeux, douceur extrême.",
+            image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=400"
+        },
+        {
+            id: 12,
+            name: "Khol Artisanal Sahara",
+            price: "800 DA",
+            description: "Soin des yeux traditionnel et protecteur.",
+            image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=400"
+        },
+        {
+            id: 13,
+            name: "Crème Bave d'Escargot",
+            price: "3200 DA",
+            description: "Réparation intense et régénération cutanée.",
+            image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&q=80&w=400"
+        },
+        {
+            id: 14,
+            name: "Savon Olive de Kabylie",
+            price: "450 DA",
+            description: "Savon naturel riche en vitamine E.",
+            image: "https://images.unsplash.com/photo-1605264964528-06403738d6dc?auto=format&fit=crop&q=80&w=400"
         }
     ];
 
