@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin | Houssem Cosmetics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .orders-table th, .orders-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .orders-table th {
+            background: #000;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .orders-table tr:hover {
+            background: #f9f9f9;
+        }
+        .badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #e0e0e0;
+        }
+        .refresh-btn {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Houssem Cosmetics</h1>
+            <p>Panneau d'Administration</p>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Gestion des Commandes</h2>
+            <button class="btn refresh-btn" onclick="fetchOrders()">
+                <i class="fas fa-sync-alt"></i> Actualiser
+            </button>
+        </div>
+
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Client</th>
+                    <th>Téléphone</th>
+                    <th>Adresse</th>
+                    <th>Produit</th>
+                    <th>Preuve de paiement</th>
+                </tr>
+            </thead>
+            <tbody id="orders-body">
+                <!-- Les commandes seront injectées ici -->
+            </tbody>
+        </table>
+        <div id="no-orders" style="text-align: center; padding: 40px; display: none;">
+            <p>Aucune commande pour le moment.</p>
+        </div>
+    </div>
+
+    <script>
+        // Demander le mot de passe à l'ouverture de la page
+        let adminPassword = localStorage.getItem('admin_pass') || prompt("Veuillez entrer le mot de passe administrateur :");
+
+        async function fetchOrders() {
+            if (!adminPassword) return;
+
+            try {
+                const response = await fetch('/api/admin/orders', {
+                    headers: {
+                        'x-admin-password': adminPassword
+                    }
+                });
+
+                if (response.status === 401) {
+                    alert("Mot de passe incorrect !");
+                    localStorage.removeItem('admin_pass');
+                    location.reload();
+                    return;
+                }
+                
+                // Sauvegarder le mot de passe s'il est correct pour ne pas le retaper
+                localStorage.setItem('admin_pass', adminPassword);
+
+                const orders = await response.json();
+                
+                const tbody = document.getElementById('orders-body');
+                const noOrders = document.getElementById('no-orders');
+                
+                tbody.innerHTML = '';
+                
+                if (orders.length === 0) {
+                    noOrders.style.display = 'block';
+                    return;
+                }
+                
+                noOrders.style.display = 'none';
+                
+                // On affiche les commandes (les plus récentes en haut)
+                orders.reverse().forEach(order => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="font-size: 0.8rem; color: #666;">${order.timestamp}</td>
+                        <td style="font-weight: 600;">${order.name}</td>
+                        <td><a href="tel:${order.phone}" style="color: black;">${order.phone}</a></td>
+                        <td style="max-width: 250px; font-size: 0.9rem;">${order.address}</td>
+                        <td><span class="badge">${order.product}</span></td>
+                        <td style="font-family: monospace; font-size: 0.85rem; color: #d32f2f;">${order.paymentProof}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error("Erreur lors de la récupération des commandes:", error);
+            }
+        }
+
+        // Charger les commandes au démarrage
+        fetchOrders();
+        
+        // Actualiser toutes les 30 secondes
+        setInterval(fetchOrders, 30000);
+    </script>
+</body>
+</html>

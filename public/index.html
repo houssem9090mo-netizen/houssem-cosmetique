@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houssem Cosmetics | Beauté & Élégance en Algérie</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Houssem Cosmetics</h1>
+            <p>L'excellence cosmétique en Algérie</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Révélez votre beauté naturelle</h2>
+            <p>Découvrez notre gamme exclusive de produits cosmétiques haut de gamme, conçus pour sublimer votre peau avec des ingrédients naturels.</p>
+            <a href="#shop" class="btn">Découvrir la collection</a>
+        </div>
+    </section>
+
+    <section class="products" id="shop">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Produits</h2>
+            </div>
+            <div class="product-grid" id="product-list">
+                <!-- Les produits seront injectés par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section class="order-section" id="order">
+        <div class="container">
+            <div class="order-container">
+                <div class="section-title">
+                    <h2>Passer une Commande</h2>
+                </div>
+                <form id="order-form" class="order-form">
+                    <div class="form-group">
+                        <label for="name">Nom Complet</label>
+                        <input type="text" id="name" required placeholder="Ex: Ahmed Benali">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Numéro de Téléphone</label>
+                        <input type="tel" id="phone" required placeholder="Ex: 0550 00 00 00">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adresse de Livraison</label>
+                        <textarea id="address" rows="3" required placeholder="Votre adresse complète en Algérie"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="product">Produit sélectionné</label>
+                        <select id="product" required>
+                            <option value="">Sélectionnez un produit</option>
+                            <!-- Les options seront injectées par JavaScript -->
+                        </select>
+                    </div>
+
+                    <div class="payment-info">
+                        <h4><i class="fas fa-university"></i> Paiement via BaridiMob</h4>
+                        <p>Veuillez effectuer le virement au RIP suivant :</p>
+                        <p><strong>007 99999 0001234567 89</strong></p>
+                        <p>Une fois le virement effectué, veuillez joindre une preuve ci-dessous.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="payment-proof">Preuve de paiement (ID de transaction ou Message)</label>
+                        <input type="text" id="payment-proof" required placeholder="Ex: ID transaction ou texte du SMS reçu">
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%;">Confirmer ma Commande</button>
+                </form>
+                <div id="order-message" style="margin-top: 20px; text-align: center; display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/213774597291" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Houssem Cosmetics. Tous droits réservés.</p>
+            <p>Livraison disponible sur tout le territoire national (58 Wilayas).</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
