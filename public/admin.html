@@ -71,7 +71,6 @@
                     <th>Téléphone</th>
                     <th>Adresse</th>
                     <th>Produit</th>
-                    <th>Preuve de paiement</th>
                 </tr>
             </thead>
             <tbody id="orders-body">
@@ -130,7 +129,6 @@
                         <td><a href="tel:${order.phone}" style="color: black;">${order.phone}</a></td>
                         <td style="max-width: 250px; font-size: 0.9rem;">${order.address}</td>
                         <td><span class="badge">${order.product}</span></td>
-                        <td style="font-family: monospace; font-size: 0.85rem; color: #d32f2f;">${order.paymentProof}</td>
                     `;
                     tbody.appendChild(tr);
                 });

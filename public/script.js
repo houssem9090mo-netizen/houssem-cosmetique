@@ -85,8 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: document.getElementById('name').value,
             phone: document.getElementById('phone').value,
             address: document.getElementById('address').value,
-            product: document.getElementById('product').value,
-            paymentProof: document.getElementById('payment-proof').value
+            product: document.getElementById('product').value
         };
 
         try {

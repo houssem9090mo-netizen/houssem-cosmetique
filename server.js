@@ -64,7 +64,7 @@ app.post('/api/orders', (req, res) => {
 📞 Tel: ${order.phone}
 📍 Adresse: ${order.address}
 💄 Produit: ${order.product}
-💰 Paiement: ${order.paymentProof}
+🚛 Mode: Paiement à la livraison
 ------------------------
 `;
     sendTelegramMessage(telegramText);
